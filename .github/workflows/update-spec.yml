@@ -40,7 +40,7 @@ jobs:
       - name: Regenerate from new spec
         if: steps.latest.outputs.latest != steps.latest.outputs.pinned
         run: |
-          npm ci
+          npm ci --ignore-scripts
           node scripts/fetch-spec.mjs "${{ steps.latest.outputs.latest }}"
           npm run build
           npm run lint
