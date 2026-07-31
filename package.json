@@ -1,6 +1,6 @@
 {
 	"name": "@froggy1014/n8n-nodes-gitea",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "Unofficial n8n community node for the Gitea API. Generated from the official Gitea swagger spec and kept in sync automatically. Not affiliated with Gitea Ltd.",
 	"keywords": [
 		"n8n-community-node-package",
@@ -31,7 +31,7 @@
 		"generate": "node scripts/generate.mjs",
 		"build": "npm run generate && tsc && npm run copy:icons && npm run copy:codex",
 		"copy:icons": "mkdir -p dist/nodes/Gitea dist/credentials && cp nodes/Gitea/*.svg dist/nodes/Gitea/ && cp credentials/*.svg dist/credentials/",
-		"copy:codex": "cp nodes/Gitea/Gitea.node.json dist/nodes/Gitea/ 2>/dev/null || true",
+		"copy:codex": "cp nodes/Gitea/*.node.json dist/nodes/Gitea/ 2>/dev/null || true",
 		"dev": "tsc --watch",
 		"format": "prettier nodes credentials --write",
 		"lint": "eslint nodes credentials package.json",
@@ -50,7 +50,8 @@
 			"dist/credentials/GiteaApi.credentials.js"
 		],
 		"nodes": [
-			"dist/nodes/Gitea/Gitea.node.js"
+			"dist/nodes/Gitea/Gitea.node.js",
+			"dist/nodes/Gitea/GiteaTrigger.node.js"
 		]
 	},
 	"devDependencies": {

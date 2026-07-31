@@ -49,6 +49,19 @@ npm run build                  # regenerate + compile
 Need another endpoint? Add its `operationId` to [`scripts/allowlist.json`](scripts/allowlist.json)
 and run `npm run build` — no hand-written node code required.
 
+## Gitea Trigger
+
+The **Gitea Trigger** node starts workflows on repository events (push, issues, pull
+requests, releases — 24 event types). Unlike passive webhook triggers, it manages the
+webhook for you:
+
+- **Activate** → registers the webhook on the repository via the Gitea API
+- **Deactivate** → deletes it again
+- A random secret is set on registration and every delivery's `X-Gitea-Signature`
+  (HMAC-SHA256) is verified — unauthorized calls get a 403
+
+Just pick owner, repository, and events. Requires a token with repository webhook scope.
+
 ## Mock Data
 
 Every operation has a **Mock Data** toggle: turn it on to get a deterministic sample

@@ -1,0 +1,19 @@
+{
+	"node": "@froggy1014/n8n-nodes-gitea.giteaTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development"],
+	"alias": ["git", "gitea", "webhook", "trigger", "push", "이벤트", "트리거", "웹훅"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.gitea.com/development/api-usage"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/froggy1014/n8n-nodes-gitea#readme"
+			}
+		]
+	}
+}
