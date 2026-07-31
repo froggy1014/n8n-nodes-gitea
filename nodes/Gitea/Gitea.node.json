@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-gitea.gitea",
+	"node": "@froggy1014/n8n-nodes-gitea.gitea",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development"],

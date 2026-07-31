@@ -60,12 +60,12 @@ The credential test calls `GET /api/v1/version`.
 
 ## Installation
 
-Community nodes panel: **Settings > Community Nodes > Install** → `n8n-nodes-gitea`.
+Community nodes panel: **Settings > Community Nodes > Install** → `@froggy1014/n8n-nodes-gitea`.
 
 Or in a custom Docker image:
 
 ```dockerfile
-RUN npm install -g n8n-nodes-gitea
+RUN npm install -g @froggy1014/n8n-nodes-gitea
 ```
 
 ## Development
