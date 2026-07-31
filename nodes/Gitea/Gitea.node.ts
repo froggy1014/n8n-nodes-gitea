@@ -28,6 +28,7 @@ import {
 	webhookOperations,
 } from './descriptions';
 import { GITEA_API_VERSION } from './registry';
+import { MOCKS } from './mocks';
 import { buildRequest } from './request';
 
 /**
@@ -47,12 +48,27 @@ export class Gitea implements INodeType {
 		version: 1,
 		usableAsTool: true,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: `Interact with a Gitea instance (repositories, issues, pull requests, releases, and more). Generated from the official Gitea API spec v${GITEA_API_VERSION}.`,
+		description: `Interact with a Gitea instance (repositories, issues, pull requests, releases, and more). Generated from the official Gitea API spec v${GITEA_API_VERSION}. Turn on Mock Data to get sample responses without a credential.`,
 		defaults: { name: 'Gitea' },
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
-		credentials: [{ name: 'giteaApi', required: true }],
+		// Mock Data 가 꺼진 실 호출 시에만 credential 필요 (mock 모드는 credential 없이 동작)
+		credentials: [
+			{
+				name: 'giteaApi',
+				required: true,
+				displayOptions: { show: { mockData: [false] } },
+			},
+		],
 		properties: [
+			{
+				displayName: 'Mock Data',
+				name: 'mockData',
+				type: 'boolean',
+				default: false,
+				description:
+					'Whether to return a sample response generated from the Gitea API spec instead of calling the API. No credential needed. Useful for building workflows before wiring a real instance.',
+			},
 			{
 				displayName: 'Resource',
 				name: 'resource',
@@ -101,11 +117,27 @@ export class Gitea implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 
-		const credentials = await this.getCredentials('giteaApi');
-		const baseUrl = (credentials.baseUrl as string).replace(/\/+$/, '');
+		const mockData = this.getNodeParameter('mockData', 0, false) as boolean;
+		const baseUrl = mockData
+			? ''
+			: ((await this.getCredentials('giteaApi')).baseUrl as string).replace(/\/+$/, '');
 
 		for (let i = 0; i < items.length; i++) {
 			try {
+				if (mockData) {
+					const resource = this.getNodeParameter('resource', i) as string;
+					const operation = this.getNodeParameter('operation', i) as string;
+					const mock = MOCKS[`${resource}.${operation}`] ?? { success: true };
+					const mockRows: unknown[] = Array.isArray(mock) ? mock : [mock];
+					for (const row of mockRows) {
+						returnData.push({
+							json: row as INodeExecutionData['json'],
+							pairedItem: { item: i },
+						});
+					}
+					continue;
+				}
+
 				const { method, path, qs, body } = buildRequest(this, i);
 
 				const response = await this.helpers.httpRequestWithAuthentication.call(this, 'giteaApi', {

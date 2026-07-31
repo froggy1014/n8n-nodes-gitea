@@ -294,7 +294,86 @@ export const REGISTRY: Record<string, RegistryEntry> = ${emit(registry, 0)};
 `,
 );
 
+// ---------- mock data ----------
+// Deterministic sample responses built from each operation's success-response
+// schema. The spec has almost no example values, so values come from types and
+// field-name heuristics. Must stay deterministic: CI checks generated files.
+
+const MOCK_DEPTH_LIMIT = 4;
+
+function mockString(name, schema) {
+	if (schema.format === 'date-time' || schema.format === 'date') return '2026-01-01T00:00:00Z';
+	if (schema.format === 'email' || name.includes('email')) return 'user@example.com';
+	if (name === 'sha' || name.endsWith('_sha') || name === 'commit_id')
+		return 'e93f2d5c47a3d0d48f8a5b6c7e1f0a9b8c7d6e5f';
+	if (name.endsWith('url')) return 'https://gitea.example.com/example';
+	if (name === 'body' || name.endsWith('description') || name === 'content')
+		return 'Example text';
+	if (name.includes('name') || name === 'title' || name === 'login') return 'example';
+	if (name.includes('branch')) return 'main';
+	if (name.includes('version')) return giteaVersion;
+	return 'string';
+}
+
+function mockValue(name, schema, stack) {
+	if (schema.example !== undefined) return schema.example;
+	if (schema['x-example'] !== undefined) return schema['x-example'];
+	if (schema.$ref) {
+		if (stack.includes(schema.$ref) || stack.length >= MOCK_DEPTH_LIMIT) return null;
+		return mockObject(resolveRef(schema.$ref), [...stack, schema.$ref]);
+	}
+	if (schema.enum) return schema.enum[0];
+	switch (schema.type) {
+		case 'integer':
+		case 'number':
+			return name === 'id' || name === 'index' || name.endsWith('_id') ? 1 : 0;
+		case 'boolean':
+			return false;
+		case 'array':
+			if (stack.length >= MOCK_DEPTH_LIMIT) return [];
+			return [mockValue(name, schema.items ?? {}, stack)];
+		case 'object':
+			return mockObject(schema, stack);
+		default:
+			return mockString(name, schema);
+	}
+}
+
+function mockObject(schema, stack) {
+	if (schema.$ref) return mockValue('', schema, stack);
+	const out = {};
+	for (const [name, prop] of Object.entries(schema.properties ?? {})) {
+		out[name] = mockValue(name, prop, stack);
+	}
+	return out;
+}
+
+/** Success-response schema of an operation (200/201/etc), or null. */
+function successSchema(op) {
+	for (const code of ['200', '201', '202']) {
+		const resp = op.responses?.[code];
+		if (!resp) continue;
+		let r = resp;
+		if (r.$ref) r = spec.responses[r.$ref.replace('#/responses/', '')];
+		if (r?.schema) return r.schema;
+	}
+	return null;
+}
+
+const mocks = {};
+for (const [resource, resDef] of Object.entries(allowlist)) {
+	for (const [opValue, { operationId }] of Object.entries(resDef.operations)) {
+		const schema = successSchema(opsById[operationId].op);
+		mocks[`${resource}.${opValue}`] = schema ? mockValue('', schema, []) : { success: true };
+	}
+}
+
+writeFileSync(
+	join(root, 'nodes', 'Gitea', 'mocks.ts'),
+	`${HEADER}export const MOCKS: Record<string, unknown> = ${JSON.stringify(mocks, null, '\t')};\n`,
+);
+
 const opCount = Object.keys(registry).length;
 console.log(
-	`Generated ${resourceFiles.length} resource files, ${opCount} operations (Gitea v${giteaVersion}).`,
+	`Generated ${resourceFiles.length} resource files, ${opCount} operations, ${opCount} mocks (Gitea v${giteaVersion}).`,
 );

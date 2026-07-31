@@ -27,4 +27,4 @@ jobs:
         run: npm run lint
 
       - name: Generated files are current
-        run: git diff --exit-code -- nodes/Gitea/descriptions nodes/Gitea/registry.ts
+        run: git diff --exit-code -- nodes/Gitea/descriptions nodes/Gitea/registry.ts nodes/Gitea/mocks.ts

@@ -49,6 +49,13 @@ npm run build                  # regenerate + compile
 Need another endpoint? Add its `operationId` to [`scripts/allowlist.json`](scripts/allowlist.json)
 and run `npm run build` — no hand-written node code required.
 
+## Mock Data
+
+Every operation has a **Mock Data** toggle: turn it on to get a deterministic sample
+response generated from the operation's response schema in the spec — no credential or
+Gitea instance needed. Useful for sketching workflows before wiring the real thing.
+Mocks are regenerated together with the descriptions on every spec update.
+
 ## Credentials
 
 Create a **Gitea API** credential in n8n:
