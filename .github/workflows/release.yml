@@ -1,8 +1,5 @@
-# Publishes to npm via OIDC trusted publishing — no NPM_TOKEN secret needed.
-# One-time setup (manual):
-#   1. First release must be published locally: npm publish
-#   2. npmjs.com > package > Settings > Trusted Publisher:
-#      GitHub Actions, repo froggy1014/n8n-nodes-gitea, workflow release.yml
+# Publishes to npm using the NPM_TOKEN repo secret.
+# Trigger: publish a GitHub Release, or run manually (workflow_dispatch).
 name: Publish to npm
 
 on:
@@ -12,7 +9,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write # OIDC token for npm trusted publishing
 
 jobs:
   publish:
@@ -25,10 +21,9 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
-      # OIDC publishing requires npm >= 11.5.1
-      - run: npm install -g npm@latest
-
       - run: npm ci --ignore-scripts
 
       # prepublishOnly runs build + strict lint
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
