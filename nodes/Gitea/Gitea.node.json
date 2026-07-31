@@ -1,0 +1,33 @@
+{
+	"node": "n8n-nodes-gitea.gitea",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development"],
+	"alias": [
+		"git",
+		"gitea",
+		"repository",
+		"repo",
+		"issue",
+		"pull request",
+		"PR",
+		"release",
+		"self-hosted",
+		"저장소",
+		"이슈",
+		"풀리퀘스트",
+		"릴리스"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.gitea.com/development/api-usage"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/froggy1014/n8n-nodes-gitea#readme"
+			}
+		]
+	}
+}

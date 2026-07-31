@@ -1,0 +1,99 @@
+{
+	"repository": {
+		"displayName": "Repository",
+		"operations": {
+			"create": { "operationId": "createCurrentUserRepo", "name": "Create", "action": "Create a repository" },
+			"delete": { "operationId": "repoDelete", "name": "Delete", "action": "Delete a repository" },
+			"get": { "operationId": "repoGet", "name": "Get", "action": "Get a repository" },
+			"listCommits": { "operationId": "repoGetAllCommits", "name": "List Commits", "action": "List commits of a repository" },
+			"listTags": { "operationId": "repoListTags", "name": "List Tags", "action": "List tags of a repository" },
+			"search": { "operationId": "repoSearch", "name": "Search", "action": "Search repositories" }
+		}
+	},
+	"branch": {
+		"displayName": "Branch",
+		"operations": {
+			"create": { "operationId": "repoCreateBranch", "name": "Create", "action": "Create a branch" },
+			"get": { "operationId": "repoGetBranch", "name": "Get", "action": "Get a branch" },
+			"list": { "operationId": "repoListBranches", "name": "List", "action": "List branches" }
+		}
+	},
+	"file": {
+		"displayName": "File",
+		"operations": {
+			"create": { "operationId": "repoCreateFile", "name": "Create", "action": "Create a file" },
+			"delete": { "operationId": "repoDeleteFile", "name": "Delete", "action": "Delete a file" },
+			"get": { "operationId": "repoGetContents", "name": "Get", "action": "Get file contents" },
+			"update": { "operationId": "repoUpdateFile", "name": "Update", "action": "Update a file" }
+		}
+	},
+	"issue": {
+		"displayName": "Issue",
+		"operations": {
+			"addLabels": { "operationId": "issueAddLabel", "name": "Add Labels", "action": "Add labels to an issue" },
+			"create": { "operationId": "issueCreateIssue", "name": "Create", "action": "Create an issue" },
+			"createComment": { "operationId": "issueCreateComment", "name": "Create Comment", "action": "Create a comment on an issue" },
+			"get": { "operationId": "issueGetIssue", "name": "Get", "action": "Get an issue" },
+			"list": { "operationId": "issueListIssues", "name": "List", "action": "List issues of a repository" },
+			"listComments": { "operationId": "issueGetComments", "name": "List Comments", "action": "List comments of an issue" },
+			"listLabels": { "operationId": "issueListLabels", "name": "List Labels", "action": "List labels of a repository" },
+			"search": { "operationId": "issueSearchIssues", "name": "Search", "action": "Search issues" },
+			"update": { "operationId": "issueEditIssue", "name": "Update", "action": "Update an issue" }
+		}
+	},
+	"pullRequest": {
+		"displayName": "Pull Request",
+		"operations": {
+			"create": { "operationId": "repoCreatePullRequest", "name": "Create", "action": "Create a pull request" },
+			"get": { "operationId": "repoGetPullRequest", "name": "Get", "action": "Get a pull request" },
+			"list": { "operationId": "repoListPullRequests", "name": "List", "action": "List pull requests" },
+			"merge": { "operationId": "repoMergePullRequest", "name": "Merge", "action": "Merge a pull request" },
+			"update": { "operationId": "repoEditPullRequest", "name": "Update", "action": "Update a pull request" }
+		}
+	},
+	"release": {
+		"displayName": "Release",
+		"operations": {
+			"create": { "operationId": "repoCreateRelease", "name": "Create", "action": "Create a release" },
+			"delete": { "operationId": "repoDeleteRelease", "name": "Delete", "action": "Delete a release" },
+			"get": { "operationId": "repoGetRelease", "name": "Get", "action": "Get a release" },
+			"getLatest": { "operationId": "repoGetLatestRelease", "name": "Get Latest", "action": "Get the latest release" },
+			"list": { "operationId": "repoListReleases", "name": "List", "action": "List releases" },
+			"update": { "operationId": "repoEditRelease", "name": "Update", "action": "Update a release" }
+		}
+	},
+	"webhook": {
+		"displayName": "Webhook",
+		"operations": {
+			"create": { "operationId": "repoCreateHook", "name": "Create", "action": "Create a webhook" },
+			"delete": { "operationId": "repoDeleteHook", "name": "Delete", "action": "Delete a webhook" },
+			"list": { "operationId": "repoListHooks", "name": "List", "action": "List webhooks" }
+		}
+	},
+	"user": {
+		"displayName": "User",
+		"operations": {
+			"get": { "operationId": "userGet", "name": "Get", "action": "Get a user" },
+			"getCurrent": { "operationId": "userGetCurrent", "name": "Get Current", "action": "Get the authenticated user" },
+			"listOwnRepos": { "operationId": "userCurrentListRepos", "name": "List Own Repos", "action": "List repos of the authenticated user" },
+			"listRepos": { "operationId": "userListRepos", "name": "List Repos", "action": "List repos of a user" },
+			"search": { "operationId": "userSearch", "name": "Search", "action": "Search users" }
+		}
+	},
+	"organization": {
+		"displayName": "Organization",
+		"operations": {
+			"createRepo": { "operationId": "createOrgRepo", "name": "Create Repo", "action": "Create a repository in an organization" },
+			"get": { "operationId": "orgGet", "name": "Get", "action": "Get an organization" },
+			"list": { "operationId": "orgGetAll", "name": "List", "action": "List organizations" },
+			"listMembers": { "operationId": "orgListMembers", "name": "List Members", "action": "List members of an organization" },
+			"listRepos": { "operationId": "orgListRepos", "name": "List Repos", "action": "List repos of an organization" }
+		}
+	},
+	"instance": {
+		"displayName": "Instance",
+		"operations": {
+			"getVersion": { "operationId": "getVersion", "name": "Get Version", "action": "Get the Gitea server version" }
+		}
+	}
+}

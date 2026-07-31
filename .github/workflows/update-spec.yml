@@ -1,0 +1,65 @@
+# Watches go-gitea/gitea releases. When a new stable release appears,
+# re-fetches the swagger spec, regenerates the node descriptions, bumps the
+# package version, and opens a PR with the diff.
+name: Update Gitea spec
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # every Monday 00:00 UTC (09:00 KST)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Detect latest Gitea release
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest=$(gh api repos/go-gitea/gitea/releases/latest --jq '.tag_name' | sed 's/^v//')
+          pinned=$(node -p "require('./scripts/spec/gitea-version.json').version")
+          echo "latest=$latest"  >> "$GITHUB_OUTPUT"
+          echo "pinned=$pinned"  >> "$GITHUB_OUTPUT"
+          echo "Latest: $latest / Pinned: $pinned"
+
+      - name: Stop if already up to date
+        if: steps.latest.outputs.latest == steps.latest.outputs.pinned
+        run: echo "Already on the latest Gitea release. Nothing to do."
+
+      - name: Regenerate from new spec
+        if: steps.latest.outputs.latest != steps.latest.outputs.pinned
+        run: |
+          npm ci
+          node scripts/fetch-spec.mjs "${{ steps.latest.outputs.latest }}"
+          npm run build
+          npm run lint
+          npm version minor --no-git-tag-version
+
+      - name: Open PR
+        if: steps.latest.outputs.latest != steps.latest.outputs.pinned
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: spec-update/v${{ steps.latest.outputs.latest }}
+          commit-message: 'feat: update to Gitea API v${{ steps.latest.outputs.latest }}'
+          title: 'Update to Gitea API v${{ steps.latest.outputs.latest }}'
+          body: |
+            Automated spec sync.
+
+            - Gitea release: [v${{ steps.latest.outputs.latest }}](https://github.com/go-gitea/gitea/releases/tag/v${{ steps.latest.outputs.latest }}) (was v${{ steps.latest.outputs.pinned }})
+            - Spec re-fetched, descriptions/registry regenerated, build and lint passed in CI.
+
+            Review the generated diff (`nodes/Gitea/descriptions/`, `nodes/Gitea/registry.ts`) for
+            removed or renamed operations before merging.
+          labels: spec-update
+          delete-branch: true
