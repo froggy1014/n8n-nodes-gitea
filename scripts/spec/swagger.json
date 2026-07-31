@@ -17,7 +17,7 @@
    "name": "MIT",
    "url": "http://opensource.org/licenses/MIT"
   },
-  "version": "1.27.1"
+  "version": "1.27.0"
  },
  "basePath": "/api/v1",
  "paths": {
@@ -8206,7 +8206,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch.",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      }
@@ -8310,7 +8310,7 @@
      },
      {
       "type": "string",
-      "description": "the name of the commit/branch/tag, default to the repository\u2019s default branch.",
+      "description": "the name of the commit/branch/tag, default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      },
@@ -8366,7 +8366,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch.",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      }
@@ -8654,7 +8654,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch.",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      }
@@ -8697,7 +8697,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch.",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      },
@@ -8745,7 +8745,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch.",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch.",
       "name": "ref",
       "in": "query"
      },
@@ -13822,7 +13822,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch",
       "name": "ref",
       "in": "query"
      }
@@ -16141,7 +16141,7 @@
      },
      {
       "type": "string",
-      "description": "The name of the commit/branch/tag. Default to the repository\u2019s default branch",
+      "description": "The name of the commit/branch/tag. Default to the repository’s default branch",
       "name": "ref",
       "in": "query"
      }
@@ -30294,20 +30294,6 @@
    },
    "x-go-package": "gitea.dev/modules/structs"
   },
-  "TopicListResponse": {
-   "description": "TopicListResponse returns a list of TopicResponse",
-   "type": "object",
-   "properties": {
-    "topics": {
-     "type": "array",
-     "items": {
-      "$ref": "#/definitions/TopicResponse"
-     },
-     "x-go-name": "Topics"
-    }
-   },
-   "x-go-package": "gitea.dev/modules/structs"
-  },
   "TopicName": {
    "description": "TopicName a list of repo topic names",
    "type": "object",
@@ -31934,7 +31920,10 @@
   "TopicListResponse": {
    "description": "TopicListResponse",
    "schema": {
-    "$ref": "#/definitions/TopicListResponse"
+    "type": "array",
+    "items": {
+     "$ref": "#/definitions/TopicResponse"
+    }
    }
   },
   "TopicNames": {
@@ -31985,7 +31974,10 @@
   "UserSettings": {
    "description": "UserSettings",
    "schema": {
-    "$ref": "#/definitions/UserSettings"
+    "type": "array",
+    "items": {
+     "$ref": "#/definitions/UserSettings"
+    }
    }
   },
   "VariableList": {

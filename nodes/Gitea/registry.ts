@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.1 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v1.27.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 export interface RegistryParam {
@@ -19,7 +19,7 @@ export interface RegistryEntry {
 	params: RegistryParam[];
 }
 
-export const GITEA_API_VERSION = "1.27.1";
+export const GITEA_API_VERSION = "1.27.0";
 
 export const REGISTRY: Record<string, RegistryEntry> = {
 	"repository.create": {
