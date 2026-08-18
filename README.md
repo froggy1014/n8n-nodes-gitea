@@ -75,8 +75,10 @@ Create a **Gitea API** credential in n8n:
 
 - **Base URL** — root of your instance, e.g. `https://gitea.example.com` (no `/api/v1`)
 - **Access Token** — Gitea > Settings > Applications > Generate New Token
+  (needs at least the `read:user` scope)
 
-The credential test calls `GET /api/v1/version`.
+The credential test calls `GET /api/v1/user`, which actually validates the token —
+`/version` responds 200 even without authentication on most instances.
 
 ## Installation
 

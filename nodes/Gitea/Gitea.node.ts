@@ -1,9 +1,13 @@
 import {
 	IExecuteFunctions,
+	INode,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	JsonObject,
+	NodeApiError,
 	NodeConnectionTypes,
+	NodeOperationError,
 } from 'n8n-workflow';
 import {
 	branchFields,
@@ -30,6 +34,46 @@ import {
 import { GITEA_API_VERSION } from './registry';
 import { MOCKS } from './mocks';
 import { buildRequest } from './request';
+
+/** axios/n8n 에러 객체의 흔한 위치들에서 API 응답 본문의 message 를 찾는다. */
+function findApiMessage(error: unknown): string | undefined {
+	const e = error as {
+		response?: { data?: { message?: unknown }; body?: { message?: unknown } };
+		cause?: { response?: { data?: { message?: unknown } } };
+		context?: { data?: { message?: unknown } };
+	};
+	for (const candidate of [
+		e?.response?.data?.message,
+		e?.response?.body?.message,
+		e?.cause?.response?.data?.message,
+		e?.context?.data?.message,
+	]) {
+		if (typeof candidate === 'string' && candidate !== '') return candidate;
+	}
+	return undefined;
+}
+
+/**
+ * Gitea 응답 본문의 message 를 NodeApiError.description 으로 살린다.
+ * 에러를 그대로 던지면 n8n 이 상태코드 보일러플레이트("Authorization failed …")로
+ * 메시지를 치환해 버려서, 401(토큰 미매칭)과 403(스코프 부족)처럼 원인이 다른
+ * 에러가 UI 에서 구분되지 않는다.
+ */
+function enrichApiError(node: INode, error: unknown, itemIndex: number): Error {
+	// 파라미터 검증 에러는 API 에러가 아니므로 그대로 통과
+	if (error instanceof NodeOperationError) return error;
+
+	const apiMessage = findApiMessage(error);
+	if (error instanceof NodeApiError) {
+		// NodeApiError 생성자는 이미 NodeApiError 인 인자를 그대로 반환하므로 직접 채운다
+		if (apiMessage && !error.description) error.description = apiMessage;
+		return error;
+	}
+	return new NodeApiError(node, error as JsonObject, {
+		itemIndex,
+		...(apiMessage ? { description: apiMessage } : {}),
+	});
+}
 
 /**
  * Gitea API — programmatic node.
@@ -160,7 +204,7 @@ export class Gitea implements INodeType {
 					returnData.push({ json: { error: error.message }, pairedItem: { item: i } });
 					continue;
 				}
-				throw error;
+				throw enrichApiError(this.getNode(), error, i);
 			}
 		}
 

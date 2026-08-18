@@ -26,7 +26,8 @@ export class GiteaApi implements ICredentialType {
 			displayName: 'Base URL',
 			name: 'baseUrl',
 			type: 'string',
-			default: 'https://gitea.com',
+			default: '',
+			placeholder: 'https://gitea.example.com',
 			required: true,
 			description: 'Root URL of the Gitea instance, without a trailing slash or /api/v1',
 		},
@@ -37,7 +38,8 @@ export class GiteaApi implements ICredentialType {
 			typeOptions: { password: true },
 			default: '',
 			required: true,
-			description: 'Personal access token from Settings > Applications',
+			description:
+				'Personal access token from Settings > Applications. Needs at least the read:user scope for the credential test to pass.',
 		},
 	];
 
@@ -50,10 +52,12 @@ export class GiteaApi implements ICredentialType {
 		},
 	};
 
+	// /version 은 무인증으로도 200 을 주는 인스턴스가 많아 토큰 검증이 안 된다.
+	// /user 는 유효한 토큰(read:user)이 있어야만 200 → 실제 토큰 검증이 된다.
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.baseUrl.replace(new RegExp("/+$"), "")}}',
-			url: '/api/v1/version',
+			url: '/api/v1/user',
 		},
 	};
 }
