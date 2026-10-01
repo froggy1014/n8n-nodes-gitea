@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.3 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 import type { INodeProperties } from 'n8n-workflow';
@@ -396,6 +396,13 @@ export const releaseFields: INodeProperties[] = [
 				type: "boolean",
 				default: false,
 				description: "filter (exclude / include) pre-releases",
+			},
+			{
+				displayName: "Tag Filter",
+				name: "tag_filter",
+				type: "string",
+				default: "",
+				description: "filter releases by tag. supports \"*\" as a wildcard (for example: v1*, *beta, *rc*).",
 			},
 		],
 	},

@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.3 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 export const MOCKS: Record<string, unknown> = {
@@ -92,6 +92,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -126,6 +127,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -150,6 +152,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -302,6 +305,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -336,6 +340,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -360,6 +365,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -443,6 +449,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -497,6 +504,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -629,6 +637,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -663,6 +672,7 @@ export const MOCKS: Record<string, unknown> = {
 						"restricted": false,
 						"source_id": 1,
 						"starred_repos_count": 0,
+						"type": "User",
 						"visibility": "public",
 						"website": "string"
 					},
@@ -687,6 +697,7 @@ export const MOCKS: Record<string, unknown> = {
 						"restricted": false,
 						"source_id": 1,
 						"starred_repos_count": 0,
+						"type": "User",
 						"visibility": "public",
 						"website": "string"
 					},
@@ -931,6 +942,7 @@ export const MOCKS: Record<string, unknown> = {
 			"last_committer_date": "2026-01-01T00:00:00Z",
 			"lfs_oid": "string",
 			"lfs_size": 0,
+			"mode": "string",
 			"name": "example",
 			"path": "string",
 			"sha": "e93f2d5c47a3d0d48f8a5b6c7e1f0a9b8c7d6e5f",
@@ -1012,6 +1024,7 @@ export const MOCKS: Record<string, unknown> = {
 		"last_committer_date": "2026-01-01T00:00:00Z",
 		"lfs_oid": "string",
 		"lfs_size": 0,
+		"mode": "string",
 		"name": "example",
 		"path": "string",
 		"sha": "e93f2d5c47a3d0d48f8a5b6c7e1f0a9b8c7d6e5f",
@@ -1068,6 +1081,7 @@ export const MOCKS: Record<string, unknown> = {
 			"last_committer_date": "2026-01-01T00:00:00Z",
 			"lfs_oid": "string",
 			"lfs_size": 0,
+			"mode": "string",
 			"name": "example",
 			"path": "string",
 			"sha": "e93f2d5c47a3d0d48f8a5b6c7e1f0a9b8c7d6e5f",
@@ -1133,6 +1147,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -1158,6 +1173,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1200,15 +1216,48 @@ export const MOCKS: Record<string, unknown> = {
 		"pin_order": 0,
 		"projects": [
 			{
+				"card_type": "string",
 				"closed_at": "2026-01-01T00:00:00Z",
 				"created_at": "2026-01-01T00:00:00Z",
+				"creator": {
+					"active": false,
+					"avatar_url": "https://gitea.example.com/example",
+					"created": "2026-01-01T00:00:00Z",
+					"description": "Example text",
+					"email": "user@example.com",
+					"followers_count": 0,
+					"following_count": 0,
+					"full_name": "example",
+					"html_url": "https://gitea.example.com/example",
+					"id": 1,
+					"is_admin": false,
+					"language": "string",
+					"last_login": "2026-01-01T00:00:00Z",
+					"location": "string",
+					"login": "example",
+					"login_name": "example",
+					"prohibit_login": false,
+					"restricted": false,
+					"source_id": 1,
+					"starred_repos_count": 0,
+					"type": "User",
+					"visibility": "public",
+					"website": "string"
+				},
 				"creator_id": 1,
 				"description": "Example text",
+				"html_url": "https://gitea.example.com/example",
 				"id": 1,
 				"is_closed": false,
+				"num_closed_issues": 0,
+				"num_issues": 0,
+				"num_open_issues": 0,
 				"owner_id": 1,
 				"repo_id": 1,
+				"state": "open",
+				"template_type": "string",
 				"title": "example",
+				"type": "string",
 				"updated_at": "2026-01-01T00:00:00Z"
 			}
 		],
@@ -1251,6 +1300,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -1297,6 +1347,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -1334,6 +1385,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -1359,6 +1411,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1401,15 +1454,48 @@ export const MOCKS: Record<string, unknown> = {
 		"pin_order": 0,
 		"projects": [
 			{
+				"card_type": "string",
 				"closed_at": "2026-01-01T00:00:00Z",
 				"created_at": "2026-01-01T00:00:00Z",
+				"creator": {
+					"active": false,
+					"avatar_url": "https://gitea.example.com/example",
+					"created": "2026-01-01T00:00:00Z",
+					"description": "Example text",
+					"email": "user@example.com",
+					"followers_count": 0,
+					"following_count": 0,
+					"full_name": "example",
+					"html_url": "https://gitea.example.com/example",
+					"id": 1,
+					"is_admin": false,
+					"language": "string",
+					"last_login": "2026-01-01T00:00:00Z",
+					"location": "string",
+					"login": "example",
+					"login_name": "example",
+					"prohibit_login": false,
+					"restricted": false,
+					"source_id": 1,
+					"starred_repos_count": 0,
+					"type": "User",
+					"visibility": "public",
+					"website": "string"
+				},
 				"creator_id": 1,
 				"description": "Example text",
+				"html_url": "https://gitea.example.com/example",
 				"id": 1,
 				"is_closed": false,
+				"num_closed_issues": 0,
+				"num_issues": 0,
+				"num_open_issues": 0,
 				"owner_id": 1,
 				"repo_id": 1,
+				"state": "open",
+				"template_type": "string",
 				"title": "example",
+				"type": "string",
 				"updated_at": "2026-01-01T00:00:00Z"
 			}
 		],
@@ -1452,6 +1538,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -1490,6 +1577,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -1515,6 +1603,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				}
@@ -1557,15 +1646,48 @@ export const MOCKS: Record<string, unknown> = {
 			"pin_order": 0,
 			"projects": [
 				{
+					"card_type": "string",
 					"closed_at": "2026-01-01T00:00:00Z",
 					"created_at": "2026-01-01T00:00:00Z",
+					"creator": {
+						"active": false,
+						"avatar_url": "https://gitea.example.com/example",
+						"created": "2026-01-01T00:00:00Z",
+						"description": "Example text",
+						"email": "user@example.com",
+						"followers_count": 0,
+						"following_count": 0,
+						"full_name": "example",
+						"html_url": "https://gitea.example.com/example",
+						"id": 1,
+						"is_admin": false,
+						"language": "string",
+						"last_login": "2026-01-01T00:00:00Z",
+						"location": "string",
+						"login": "example",
+						"login_name": "example",
+						"prohibit_login": false,
+						"restricted": false,
+						"source_id": 1,
+						"starred_repos_count": 0,
+						"type": "User",
+						"visibility": "public",
+						"website": "string"
+					},
 					"creator_id": 1,
 					"description": "Example text",
+					"html_url": "https://gitea.example.com/example",
 					"id": 1,
 					"is_closed": false,
+					"num_closed_issues": 0,
+					"num_issues": 0,
+					"num_open_issues": 0,
 					"owner_id": 1,
 					"repo_id": 1,
+					"state": "open",
+					"template_type": "string",
 					"title": "example",
+					"type": "string",
 					"updated_at": "2026-01-01T00:00:00Z"
 				}
 			],
@@ -1608,6 +1730,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1656,6 +1779,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1706,6 +1830,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -1731,6 +1856,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				}
@@ -1773,15 +1899,48 @@ export const MOCKS: Record<string, unknown> = {
 			"pin_order": 0,
 			"projects": [
 				{
+					"card_type": "string",
 					"closed_at": "2026-01-01T00:00:00Z",
 					"created_at": "2026-01-01T00:00:00Z",
+					"creator": {
+						"active": false,
+						"avatar_url": "https://gitea.example.com/example",
+						"created": "2026-01-01T00:00:00Z",
+						"description": "Example text",
+						"email": "user@example.com",
+						"followers_count": 0,
+						"following_count": 0,
+						"full_name": "example",
+						"html_url": "https://gitea.example.com/example",
+						"id": 1,
+						"is_admin": false,
+						"language": "string",
+						"last_login": "2026-01-01T00:00:00Z",
+						"location": "string",
+						"login": "example",
+						"login_name": "example",
+						"prohibit_login": false,
+						"restricted": false,
+						"source_id": 1,
+						"starred_repos_count": 0,
+						"type": "User",
+						"visibility": "public",
+						"website": "string"
+					},
 					"creator_id": 1,
 					"description": "Example text",
+					"html_url": "https://gitea.example.com/example",
 					"id": 1,
 					"is_closed": false,
+					"num_closed_issues": 0,
+					"num_issues": 0,
+					"num_open_issues": 0,
 					"owner_id": 1,
 					"repo_id": 1,
+					"state": "open",
+					"template_type": "string",
 					"title": "example",
+					"type": "string",
 					"updated_at": "2026-01-01T00:00:00Z"
 				}
 			],
@@ -1824,6 +1983,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1862,6 +2022,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -1887,6 +2048,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -1929,15 +2091,48 @@ export const MOCKS: Record<string, unknown> = {
 		"pin_order": 0,
 		"projects": [
 			{
+				"card_type": "string",
 				"closed_at": "2026-01-01T00:00:00Z",
 				"created_at": "2026-01-01T00:00:00Z",
+				"creator": {
+					"active": false,
+					"avatar_url": "https://gitea.example.com/example",
+					"created": "2026-01-01T00:00:00Z",
+					"description": "Example text",
+					"email": "user@example.com",
+					"followers_count": 0,
+					"following_count": 0,
+					"full_name": "example",
+					"html_url": "https://gitea.example.com/example",
+					"id": 1,
+					"is_admin": false,
+					"language": "string",
+					"last_login": "2026-01-01T00:00:00Z",
+					"location": "string",
+					"login": "example",
+					"login_name": "example",
+					"prohibit_login": false,
+					"restricted": false,
+					"source_id": 1,
+					"starred_repos_count": 0,
+					"type": "User",
+					"visibility": "public",
+					"website": "string"
+				},
 				"creator_id": 1,
 				"description": "Example text",
+				"html_url": "https://gitea.example.com/example",
 				"id": 1,
 				"is_closed": false,
+				"num_closed_issues": 0,
+				"num_issues": 0,
+				"num_open_issues": 0,
 				"owner_id": 1,
 				"repo_id": 1,
+				"state": "open",
+				"template_type": "string",
 				"title": "example",
+				"type": "string",
 				"updated_at": "2026-01-01T00:00:00Z"
 			}
 		],
@@ -1980,6 +2175,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -2008,6 +2204,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -2033,6 +2230,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -2129,6 +2327,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -2263,6 +2462,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -2335,6 +2535,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -2375,6 +2576,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -2449,6 +2651,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -2477,6 +2680,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -2502,6 +2706,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -2598,6 +2803,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -2732,6 +2938,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -2804,6 +3011,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -2844,6 +3052,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -2918,6 +3127,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -2947,6 +3157,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -2972,6 +3183,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				}
@@ -3068,6 +3280,7 @@ export const MOCKS: Record<string, unknown> = {
 						"restricted": false,
 						"source_id": 1,
 						"starred_repos_count": 0,
+						"type": "User",
 						"visibility": "public",
 						"website": "string"
 					},
@@ -3202,6 +3415,7 @@ export const MOCKS: Record<string, unknown> = {
 						"restricted": false,
 						"source_id": 1,
 						"starred_repos_count": 0,
+						"type": "User",
 						"visibility": "public",
 						"website": "string"
 					},
@@ -3274,6 +3488,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -3314,6 +3529,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				}
@@ -3388,6 +3604,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -3420,6 +3637,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -3445,6 +3663,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -3541,6 +3760,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -3675,6 +3895,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -3747,6 +3968,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -3787,6 +4009,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -3861,6 +4084,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -3898,6 +4122,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -3952,6 +4177,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -4003,6 +4229,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -4055,6 +4282,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -4107,6 +4335,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -4179,6 +4408,7 @@ export const MOCKS: Record<string, unknown> = {
 		"restricted": false,
 		"source_id": 1,
 		"starred_repos_count": 0,
+		"type": "User",
 		"visibility": "public",
 		"website": "string"
 	},
@@ -4203,6 +4433,7 @@ export const MOCKS: Record<string, unknown> = {
 		"restricted": false,
 		"source_id": 1,
 		"starred_repos_count": 0,
+		"type": "User",
 		"visibility": "public",
 		"website": "string"
 	},
@@ -4296,6 +4527,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -4330,6 +4562,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -4354,6 +4587,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -4505,6 +4739,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -4539,6 +4774,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -4563,6 +4799,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -4647,6 +4884,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			}
@@ -4742,6 +4980,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		},
@@ -4776,6 +5015,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -4800,6 +5040,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -4910,6 +5151,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -5004,6 +5246,7 @@ export const MOCKS: Record<string, unknown> = {
 				"restricted": false,
 				"source_id": 1,
 				"starred_repos_count": 0,
+				"type": "User",
 				"visibility": "public",
 				"website": "string"
 			},
@@ -5038,6 +5281,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -5062,6 +5306,7 @@ export const MOCKS: Record<string, unknown> = {
 					"restricted": false,
 					"source_id": 1,
 					"starred_repos_count": 0,
+					"type": "User",
 					"visibility": "public",
 					"website": "string"
 				},
@@ -5144,6 +5389,7 @@ export const MOCKS: Record<string, unknown> = {
 		"restricted": false,
 		"source_id": 1,
 		"starred_repos_count": 0,
+		"type": "User",
 		"visibility": "public",
 		"website": "string"
 	},
@@ -5175,6 +5421,7 @@ export const MOCKS: Record<string, unknown> = {
 			"restricted": false,
 			"source_id": 1,
 			"starred_repos_count": 0,
+			"type": "User",
 			"visibility": "public",
 			"website": "string"
 		}
@@ -5200,10 +5447,11 @@ export const MOCKS: Record<string, unknown> = {
 		"restricted": false,
 		"source_id": 1,
 		"starred_repos_count": 0,
+		"type": "User",
 		"visibility": "public",
 		"website": "string"
 	},
 	"instance.getVersion": {
-		"version": "1.27.3"
+		"version": "28.0.0"
 	}
 };
