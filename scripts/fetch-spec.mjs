@@ -18,21 +18,33 @@ const argVersion = process.argv[2]?.replace(/^v/, '');
 const pinned = JSON.parse(readFileSync(pinFile, 'utf8')).version;
 const version = argVersion ?? pinned;
 
-const url = `https://raw.githubusercontent.com/go-gitea/gitea/v${version}/templates/swagger/v1_json.tmpl`;
+// Gitea 28+ ships a generated JSON file; older releases ship a Go template.
+const base = `https://raw.githubusercontent.com/go-gitea/gitea/v${version}/templates/swagger`;
+const candidates = [`${base}/v1-swagger.generated.json`, `${base}/v1_json.tmpl`];
 console.log(`Fetching Gitea swagger spec v${version} ...`);
 
-const res = await fetch(url);
-if (!res.ok) {
-	console.error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
+let raw;
+for (const url of candidates) {
+	const res = await fetch(url);
+	if (res.ok) {
+		raw = await res.text();
+		break;
+	}
+	console.warn(`Not found at ${url}: ${res.status} ${res.statusText}`);
+}
+if (raw === undefined) {
+	console.error(`Failed to fetch the swagger spec for v${version}`);
 	process.exit(1);
 }
-let raw = await res.text();
 
 // Sanitize Go template placeholders. Known ones get real values; anything
 // unknown is dropped so the file still parses (and we log it for review).
 raw = raw
 	.replace(/\{\{\.SwaggerAppVer\}\}/g, version)
-	.replace(/\{\{\.SwaggerAppSubUrl\}\}/g, '');
+	.replace(/\{\{\.SwaggerAppSubUrl\}\}/g, '')
+	// Gitea 28+ placeholders
+	.replace(/0\.0\.0\+GITEA-API-APP-VERSION/g, version)
+	.replace(/\/GITEA-API-APP-SUBURL/g, '');
 const leftovers = raw.match(/\{\{[^}]*\}\}/g);
 if (leftovers) {
 	console.warn('Unknown template placeholders removed:', [...new Set(leftovers)].join(', '));
