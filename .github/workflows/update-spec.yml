@@ -1,11 +1,12 @@
 # Watches go-gitea/gitea releases. When a new stable release appears,
 # re-fetches the swagger spec, regenerates the node descriptions, bumps the
-# package version, and opens a PR with the diff.
+# package version, and opens a PR with the diff. A single fixed branch is
+# used, so a newer release overwrites the open PR instead of opening another.
 name: Update Gitea spec
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # every Monday 00:00 UTC (09:00 KST)
+    - cron: '0 0 * * *' # every day 00:00 UTC (09:00 KST)
   workflow_dispatch: {}
 
 permissions:
@@ -50,9 +51,9 @@ jobs:
         if: steps.latest.outputs.latest != steps.latest.outputs.pinned
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: spec-update/v${{ steps.latest.outputs.latest }}
+          branch: feat/gitea-spec-update
           commit-message: 'feat: update to Gitea API v${{ steps.latest.outputs.latest }}'
-          title: 'Update to Gitea API v${{ steps.latest.outputs.latest }}'
+          title: 'feat: update to Gitea API v${{ steps.latest.outputs.latest }}'
           body: |
             Automated spec sync.
 
