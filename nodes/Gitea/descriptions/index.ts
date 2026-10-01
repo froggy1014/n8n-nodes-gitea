@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.3 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 export * from './Repository';

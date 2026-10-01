@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.3 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 import type { INodeProperties } from 'n8n-workflow';
@@ -345,6 +345,7 @@ export const issueFields: INodeProperties[] = [
 		name: "body",
 		type: "string",
 		default: "",
+		description: "Body is the comment text content",
 		required: true,
 		displayOptions: {
 			show: {

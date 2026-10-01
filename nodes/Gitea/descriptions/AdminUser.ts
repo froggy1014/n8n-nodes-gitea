@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v1.27.3 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 import type { INodeProperties } from 'n8n-workflow';
@@ -182,7 +182,7 @@ export const adminUserFields: INodeProperties[] = [
 					},
 				],
 				default: "public",
-				description: "User visibility level: public, limited, or private public UserVisibilityPublic limited UserVisibilityLimited private UserVisibilityPrivate",
+				description: "User visibility level: public, limited, or private",
 			},
 		],
 	},
@@ -399,6 +399,7 @@ export const adminUserFields: INodeProperties[] = [
 		name: "source_id",
 		type: "number",
 		default: 0,
+		description: "The authentication source ID to associate with the user",
 		required: true,
 		displayOptions: {
 			show: {
@@ -475,6 +476,7 @@ export const adminUserFields: INodeProperties[] = [
 				name: "email",
 				type: "string",
 				default: "",
+				description: "The email address of the user",
 			},
 			{
 				displayName: "Full Name",
@@ -536,6 +538,27 @@ export const adminUserFields: INodeProperties[] = [
 				description: "Whether the user has restricted access privileges",
 			},
 			{
+				displayName: "Type",
+				name: "type",
+				type: "options",
+				options: [
+					{
+						name: "User",
+						value: "User",
+					},
+					{
+						name: "Organization",
+						value: "Organization",
+					},
+					{
+						name: "Bot",
+						value: "Bot",
+					},
+				],
+				default: "User",
+				description: "The user type",
+			},
+			{
 				displayName: "Visibility",
 				name: "visibility",
 				type: "options",
@@ -554,7 +577,7 @@ export const adminUserFields: INodeProperties[] = [
 					},
 				],
 				default: "public",
-				description: "User visibility level: public, limited, or private public UserVisibilityPublic limited UserVisibilityLimited private UserVisibilityPrivate",
+				description: "User visibility level: public, limited, or private",
 			},
 			{
 				displayName: "Website",
