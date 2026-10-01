@@ -31,7 +31,7 @@ npm run build                  # regenerate + compile
 
 ## Resources and operations
 
-47 operations across 10 resources (allowlist of the 482 operations in the full spec):
+52 operations across 11 resources (allowlist of the 482 operations in the full spec):
 
 | Resource | Operations |
 |----------|-----------|
@@ -44,6 +44,7 @@ npm run build                  # regenerate + compile
 | Webhook | List, Create, Delete |
 | User | Get Current, Get, Search, List Repos, List Own Repos |
 | Organization | List, Get, List Members, List Repos, Create Repo |
+| Admin User | Search, Create, Update, Rename, Delete (requires a site admin token) |
 | Instance | Get Version |
 
 Need another endpoint? Add its `operationId` to [`scripts/allowlist.json`](scripts/allowlist.json)

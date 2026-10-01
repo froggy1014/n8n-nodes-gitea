@@ -11,4 +11,5 @@ export * from './Release';
 export * from './Webhook';
 export * from './User';
 export * from './Organization';
+export * from './AdminUser';
 export * from './Instance';

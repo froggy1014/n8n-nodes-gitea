@@ -195,6 +195,8 @@ for (const [resource, resDef] of Object.entries(allowlist)) {
 				name: paramName,
 				type: t.type,
 				options: t.options,
+				// Mask secrets (e.g. admin user password) in the n8n UI
+				typeOptions: t.type === 'string' && /password/i.test(p.api) ? { password: true } : undefined,
 				default: t.default,
 				description: p.description || undefined,
 			};

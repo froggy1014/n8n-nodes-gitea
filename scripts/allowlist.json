@@ -90,6 +90,16 @@
 			"listRepos": { "operationId": "orgListRepos", "name": "List Repos", "action": "List repos of an organization" }
 		}
 	},
+	"adminUser": {
+		"displayName": "Admin User",
+		"operations": {
+			"create": { "operationId": "adminCreateUser", "name": "Create", "action": "Create a user (admin)" },
+			"delete": { "operationId": "adminDeleteUser", "name": "Delete", "action": "Delete a user (admin)" },
+			"rename": { "operationId": "adminRenameUser", "name": "Rename", "action": "Rename a user (admin)" },
+			"search": { "operationId": "adminSearchUsers", "name": "Search", "action": "Search users (admin)" },
+			"update": { "operationId": "adminEditUser", "name": "Update", "action": "Update a user (admin)" }
+		}
+	},
 	"instance": {
 		"displayName": "Instance",
 		"operations": {

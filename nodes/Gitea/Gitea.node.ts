@@ -10,6 +10,8 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 import {
+	adminUserFields,
+	adminUserOperations,
 	branchFields,
 	branchOperations,
 	fileFields,
@@ -119,6 +121,7 @@ export class Gitea implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [
+					{ name: 'Admin User', value: 'adminUser' },
 					{ name: 'Branch', value: 'branch' },
 					{ name: 'File', value: 'file' },
 					{ name: 'Instance', value: 'instance' },
@@ -133,6 +136,7 @@ export class Gitea implements INodeType {
 				default: 'repository',
 			},
 
+			adminUserOperations,
 			branchOperations,
 			fileOperations,
 			instanceOperations,
@@ -144,6 +148,7 @@ export class Gitea implements INodeType {
 			userOperations,
 			webhookOperations,
 
+			...adminUserFields,
 			...branchFields,
 			...fileFields,
 			...instanceFields,

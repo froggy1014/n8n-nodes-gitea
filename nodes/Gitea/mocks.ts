@@ -5123,6 +5123,86 @@ export const MOCKS: Record<string, unknown> = {
 			"website": "string"
 		}
 	],
+	"adminUser.create": {
+		"active": false,
+		"avatar_url": "https://gitea.example.com/example",
+		"created": "2026-01-01T00:00:00Z",
+		"description": "Example text",
+		"email": "user@example.com",
+		"followers_count": 0,
+		"following_count": 0,
+		"full_name": "example",
+		"html_url": "https://gitea.example.com/example",
+		"id": 1,
+		"is_admin": false,
+		"language": "string",
+		"last_login": "2026-01-01T00:00:00Z",
+		"location": "string",
+		"login": "example",
+		"login_name": "example",
+		"prohibit_login": false,
+		"restricted": false,
+		"source_id": 1,
+		"starred_repos_count": 0,
+		"visibility": "public",
+		"website": "string"
+	},
+	"adminUser.delete": {
+		"success": true
+	},
+	"adminUser.rename": {
+		"success": true
+	},
+	"adminUser.search": [
+		{
+			"active": false,
+			"avatar_url": "https://gitea.example.com/example",
+			"created": "2026-01-01T00:00:00Z",
+			"description": "Example text",
+			"email": "user@example.com",
+			"followers_count": 0,
+			"following_count": 0,
+			"full_name": "example",
+			"html_url": "https://gitea.example.com/example",
+			"id": 1,
+			"is_admin": false,
+			"language": "string",
+			"last_login": "2026-01-01T00:00:00Z",
+			"location": "string",
+			"login": "example",
+			"login_name": "example",
+			"prohibit_login": false,
+			"restricted": false,
+			"source_id": 1,
+			"starred_repos_count": 0,
+			"visibility": "public",
+			"website": "string"
+		}
+	],
+	"adminUser.update": {
+		"active": false,
+		"avatar_url": "https://gitea.example.com/example",
+		"created": "2026-01-01T00:00:00Z",
+		"description": "Example text",
+		"email": "user@example.com",
+		"followers_count": 0,
+		"following_count": 0,
+		"full_name": "example",
+		"html_url": "https://gitea.example.com/example",
+		"id": 1,
+		"is_admin": false,
+		"language": "string",
+		"last_login": "2026-01-01T00:00:00Z",
+		"location": "string",
+		"login": "example",
+		"login_name": "example",
+		"prohibit_login": false,
+		"restricted": false,
+		"source_id": 1,
+		"starred_repos_count": 0,
+		"visibility": "public",
+		"website": "string"
+	},
 	"instance.getVersion": {
 		"version": "1.27.3"
 	}
