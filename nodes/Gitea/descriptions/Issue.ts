@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.3.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 import type { INodeProperties } from 'n8n-workflow';
@@ -152,7 +152,7 @@ export const issueFields: INodeProperties[] = [
 				name: "labels",
 				type: "json",
 				default: "[]",
-				description: "Labels can be a list of integers representing label IDs or a list of strings representing label names",
+				description: "Labels can be a list of integers representing label IDs or a list of strings representing label names. If a repository label and an organization label share a name, the repository label is used.",
 			},
 		],
 	},
