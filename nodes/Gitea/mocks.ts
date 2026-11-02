@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit by hand.
-// Source: Gitea swagger spec v28.0.0 (scripts/spec/swagger.json)
+// Source: Gitea swagger spec v28.3.0 (scripts/spec/swagger.json)
 // Regenerate with: npm run generate
 /* eslint-disable */
 export const MOCKS: Record<string, unknown> = {
@@ -5452,6 +5452,6 @@ export const MOCKS: Record<string, unknown> = {
 		"website": "string"
 	},
 	"instance.getVersion": {
-		"version": "28.0.0"
+		"version": "28.3.0"
 	}
 };
